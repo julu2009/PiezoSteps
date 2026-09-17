@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PiezoSteps</title>
+    <!-- Conector a style.css junto a las fuentes utilizadas de fonts.googleapis.com --> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Libre+Barcode+39+Extended&family=Playwrite+BE+WAL+Guides&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Great+Vibes&family=Libre+Barcode+39+Extended&family=Playwrite+BE+WAL+Guides&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="main-container">
+    <div class="LadoIzquierdo">
+      <section id="Intro">
+        <!-- Nombre, logo y slogal del proyecto --> 
+        <b>PiezoSteps</b>
+        <i1> By: The Live Walkers</i1>
+        <i>"Pasos que alimentan al mundo"</i>
+        <i2> ODS 7: Energía Asequible Y No Contaminante </i2>
+        <img src="https://www.pactomundial.org/wp-content/uploads/2021/10/7-energia-asequible-y-no-contaminante-3.jpg" alt="" width="80" height="80">
+        <br>
+        <br1> </br1>
+        <br>
+      </section>
+      <section id="InputsCalculo">
+        <!-- Inputs para los datos necesarios para hacer los calculos -->
+        <!-- Cantidad de gente caminando a la vez en la acera a pasospormin (Ver app.js) -->
+        <label for="GenteALaVez">Gente caminando a la vez</label>
+        <input type="number" id="GenteALaVez" min="0" placeholder="ej. 20 personas ">
+        <br>
+        <!-- Tamaño de la baldosa (Ver app.js) -->
+        <label for="LongitudPanel">Longitud de la baldosa piezoelectrica (Metros)</label>
+        <input type="number" id="LongitudPanel" min="0" placeholder="ej. 0.35 metros">
+        <br>
+        <!-- Longitud de la acera en M2 -->
+        <label for="LongitudAcera">Longitud de la acera (Metros)</label>
+        <input type="number" id="LongitudAcera" min="0" placeholder="ej. 10 metros ">
+        <br>
+        <!-- Duracion de tiempo que la gente camina en la acera -->
+        <label for="Duracion">Duración</label>
+        <input type="number" id="Duracion" min="0" placeholder="ej. 30 mins/horas/días">
+        <select id="UnidadDuracion"><option value="min">Minutos</option><option value="hr">Horas</option><option value="dia">Días</option></select>
+        <br>
+        <button id="Calcular">Calcular</button>
+        <!-- Tabla para mostrar los resultados de los calculos + sus comparaciones -->
+        <div id="Resultados"></div>
+               <i></i>
+        <i>Japan is turning footsteps into electricity by the way.  <a href="https://parametric-architecture.com/japan-turning-footsteps-electricity/" > <i3>Want to know more?</i3></a></i>
+        <!-- Conector a las funciones de calculo en app.js -->
+        <script src="app.js" defer></script>
+      </section>
+    </div>
+    <div class="LadoDerecho">
+      <section id="InfoProyecto">
+        <!--Explicación del funcionamiento del proyecto--> 
+        <p1>Hola, somos el equipo <strong>The Live Walkers</strong>, y venimos a presentar nuestro proyecto: <strong>PiezoSteps</strong>.</p1>
+        <b1>¿Cómo funciona PiezoSteps?</b1>
+        <p>PiezoSteps funciona calculando cuánta energía eléctrica se puede producir por medio de una acera con paneles piezoeléctricos. Estos paneles aprovechan la presión que se produce cuando las personas pisan estos paneles al caminar.</p>
+        <b1>¿Qué hace el programa?</b1>
+        <ol>
+          <li>El usuario inserta cuántas personas están caminando por la acera al mismo tiempo, la longitud de la acera, la longitud de la placa piezoelectrica y el tiempo que dura el recorrido</li>
+          <li>El programa determina cuántos paneles piezoeléctricos caben en esa longitud dividiendo la longitud de la acera entre la longitud del panel.</li>
+          <li>Se calcula la cantidad de pasos que realiza el número de personas elegido multiplicando la cantidad de pasos por persona por la cantidad de personas por el tiempo elegido.</li>
+          <li>Por último, se calcula y muestra la energía en joules (J) y en kilovatios-hora (kWh) multiplicando la cantidad de pasos por la energía por paso.</li>
+        </ol>
+        <b1>Lógica de Funciones de app.js</b1>
+        <p>La lógica del archivo <code>app.js</code> se basa en calcular la cantidad de energía que pueden producir unos paneles instalados en una acera a partir de la caminata de personas.</p>
+        <p>Primero se establecen unos datos base, como la longitud de cada panel, la energía generada por cada paso y la cantidad promedio de pasos que una persona realiza por minuto. Estos valores sirven como base para realizar los cálculos.</p>
+        <p>La función principal es <code>CalcularEnergia()</code>. Esta recibe la cantidad de personas que están caminando al mismo tiempo, la longitud de la acera, la duración de la caminata de las personas y la unidad de tiempo seleccionada. Primero calcula aproximadamente cuántos paneles pueden instalarse dividiendo la longitud de la acera entre la longitud de los paneles.</p>
+        <p>Seguido de esto, se calcula la cantidad total de pasos por minuto multiplicando el número de personas por la cantidad promedio de pasos que realiza una persona. La duración introducida por el usuario se convierte a minutos para utilizar una misma unidad de tiempo en todos los cálculos.</p>
+        <p>Con estos datos se obtiene el número total de pasos realizados durante el periodo seleccionado. Luego, los pasos totales se multiplican por la energía producida por cada paso, obteniendo la energía total generada en joules. También se realizan conversiones a Wh y kWh para facilitar el entendimiento del resultado.</p>
+        <p>La función <code>humanizarEnergia()</code> se encarga de mostrar la energía obtenida de manera sencilla. Dependiendo de la cantidad de energía, el resultado se presenta en joules, watt-hora o kilowatt-hora.</p>
+        <p>Por otro lado, el arreglo <code>COMPARACIONES</code> contiene diferentes ejemplos de consumo de energía, como la carga de un celular, un bombillo LED, una laptop, un router WiFi o una nevera. La función <code>mejorComparacion()</code> utiliza estos valores para generar una comparación que permita entender mejor cuánta energía se ha producido.</p>
+        <p>Por último, cuando el usuario presiona el botón Calcular, el programa toma los valores introducidos en el formulario y los envía a la función <code>CalcularEnergia()</code>. Después, los resultados son mostrados en el elemento HTML identificado como <code>Resultados</code>. Con esto, el programa conecta los datos ingresados por el usuario con los cálculos y presenta de forma sencilla la energía que se podría generar.</p>
+        <i3>Integrantes: Douglas Ramos Velasquez, Juan Luis Morales Monteroza, Santiago Alexander Hidalgo, Diego Andres Rojas</i3>
+      </section>  
+    </div>
+  </div>
+</body>
+</html>
