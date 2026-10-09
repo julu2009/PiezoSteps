@@ -57,3 +57,4 @@ Hola, somos el equipo The Live Walkers, y venimos a presentar nuestro proyecto: 
         Los calculos van en progreso, pero se prefirio crear una base primero, y luego ir implementando nuevas funciones.
         Además, se podrian agregar más detalles visuales, tales como representaciones graficas de la energía generada (utilizando las referencias
         de consumo energetico incluidas en el proyecto).
+        A futuro, se busca integrar una interfaz visual interactiva en la que se puedan mover los valores mediante sliders, y esto se refleje a tiempo real en la energía producida, así como tambien salga una representacion visual de los cambios.
